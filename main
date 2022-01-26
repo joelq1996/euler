@@ -1,0 +1,16 @@
+f=@ (x,y) 3*x-2*y;
+g=@ (x,y) 2*x-2*y;
+h=@(t) (8/5)*exp(2*t)+(2/5)*exp(-t);
+i=@(t) (1/2)*(8/5)*exp(2*t)-2*(2/5)*exp(-t);
+a=0;% tiempo inicial
+b=1;% tiempo final;
+n=100;% numero de iteraciones
+x0=2;
+y0=0;
+[xn,yn,tn] = euler_s(f,g,a,b,n,x0,y0);
+plot(tn,xn,'c'),hold on;
+plot(tn,yn,'g');
+plot(tn,h(tn),'--k');
+plot(tn,i(tn),'--y');
+title('Método de Euler')
+legend('Aprox. Euler','Aprox. Euler','Sol.Analitica','Sol.Analitica');
