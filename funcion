@@ -1,0 +1,21 @@
+function [xn,yn,tn] = euler_s(f,g,a,b,n,x0,y0)
+%{
+Joel Quintuna
+ARGUMENTOS:
+f: funcion a resolver en el lapso de tiempo especificado
+xo,yo : valores iniciales de las ecuaciones
+xn,yn : vectores correspondientes a los resusltados de x e y.
+tn : valores de vector x en el tiempo
+%}
+
+t=(b-a)/n;
+xn=[x0];
+yn=[y0];
+tn=a:t:b;
+for i=2:n+1
+    z=xn(i-1)+t*(f(xn(i-1),yn(i-1)));
+    w=yn(i-1)+t*(g(xn(i-1),yn(i-1)));
+    xn(i)=z;
+    yn(i)=w;
+end
+end
